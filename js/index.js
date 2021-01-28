@@ -31,7 +31,7 @@ const tic_tac_toe = {
             this.draw();
             let winning_sequences_index = this.check_winning_sequences(this.simbols.options[this.simbols.turn]);
             if (winning_sequences_index >= 0) {
-
+                this.game_is_over();
             } else {
                 this.simbols.change();
             }
@@ -41,13 +41,18 @@ const tic_tac_toe = {
         }
     },
 
+    game_is_over: function() {
+        this.gameover = true;
+        console.log('GAME OVER');
+    },
+
     check_winning_sequences: function(simbol) {
         for (i in this.winning_sequences) {
             if (this.board[this.winning_sequences[i][0]] == simbol &&
                 this.board[this.winning_sequences[i][1]] == simbol &&
                 this.board[this.winning_sequences[i][2]] == simbol) {
-                return i;
                 console.log(`Sequencia vencedora: ${i}`);
+                return i;
             }
         }
         return -1
