@@ -33,6 +33,18 @@ const tic_tac_toe = {
         }
     },
 
+    check_winning_sequences: function(simbol) {
+        for (i in this.winning_sequences) {
+            if (this.board[this.winning_sequences[i][0]] == simbol &&
+                this.board[this.winning_sequences[i][1]] == simbol &&
+                this.board[this.winning_sequences[i][2]] == simbol) {
+                return i;
+                console.log(`Sequencia vencedora: ${i}`);
+            }
+        }
+        return -1
+    },
+
     draw: function() {
         let content = '';
 
