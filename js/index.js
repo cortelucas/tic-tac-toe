@@ -29,7 +29,15 @@ const tic_tac_toe = {
         if (this.board[position] === '') {
             this.board[position] = this.simbols.options[this.simbols.turn];
             this.draw();
-            this.simbols.change();
+            let winning_sequences_index = this.check_winning_sequences(this.simbols.options[this.simbols.turn]);
+            if (winning_sequences_index >= 0) {
+
+            } else {
+                this.simbols.change();
+            }
+            return true;
+        } else {
+            return false;
         }
     },
 
